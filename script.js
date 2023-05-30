@@ -1,9 +1,11 @@
-let user_choice ="";
+let user_choice = "";
 let computer_choice = "";
+let user_score = 0;
 
 let user_choice_element = document.getElementById("user_choice");
 let computer_choice_element = document.getElementById("computer_choice");
 let winner_element = document.getElementById("winner");
+let score_element = document.getElementById("score");
 
 let buttons = document.querySelectorAll(".choice");
 
@@ -23,11 +25,19 @@ function handleChoiceClick(e) {
 
   let winner = getWinner(userChoice, computerChoice);
   winner_element.innerText = winner;
+
+  if (winner === "user") {
+    user_score++;
+  } else if (winner === "computer") {
+    user_score--;
+  } // else its a tie!
+
+  score_element.innerText = user_score;
 }
 
 function generateComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
-  const choiceNum = Math.floor(Math.random()*3);
+  const choiceNum = Math.floor(Math.random() * 3);
   return choices[choiceNum];
 }
 
