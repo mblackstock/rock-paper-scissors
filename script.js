@@ -8,5 +8,8 @@ buttons.forEach(e => {
 });
 
 function handleChoiceClick(e) {
-  console.log("click");
+  let button = e.target;
+  let choice = button.dataset.choice;
+  
+  console.log(`click ${choice}`);
 }
