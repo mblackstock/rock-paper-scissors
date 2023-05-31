@@ -16,12 +16,10 @@ buttons.forEach(e => {
 function handleChoiceClick(e) {
   let button = e.target;
   let userChoice = button.dataset.choice;
-
-  user_choice_element.innerText = userChoice;
-
+  changeImage(user_choice_element, userChoice);
+  
   let computerChoice = generateComputerChoice();
-
-  computer_choice_element.innerText = computerChoice;
+  changeImage(computer_choice_element, computerChoice);
 
   let winner = getWinner(userChoice, computerChoice);
   winner_element.innerText = winner;
@@ -69,4 +67,11 @@ function getWinner(userChoice, computerChoice) {
     }
   }
   return winner;
+}
+
+function changeImage(element, choice) {
+  const tag = document.createElement("img");
+  tag.setAttribute("src", `images/${choice}.png`)
+  tag.setAttribute("width", "50px")
+  element.replaceChildren(tag);
 }
